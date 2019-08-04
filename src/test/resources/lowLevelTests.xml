@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="YandexSpellerTests">
+    <test name="LowLevelTests">
+        <classes>
+            <class name="low_level.CorrectResponseTest"/>
+        </classes>
+    </test>
+</suite>

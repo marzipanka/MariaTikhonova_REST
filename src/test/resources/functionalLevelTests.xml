@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="YandexSpellerTests">
+    <test name="FunctionalLevelTests">
+        <classes>
+            <class name="functional_level.CorrectTextTest"/>
+            <class name="functional_level.IncorrectTextTest"/>
+            <class name="functional_level.EmptyStringTest"/>
+            <class name="functional_level.NumbersTest"/>
+        </classes>
+    </test>
+</suite>
