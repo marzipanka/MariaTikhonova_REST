@@ -22,6 +22,7 @@ public class SpellerAssertions {
         assertTrue(resultList.isEmpty());
     }
 
+    //todo про название - написала коменты ниже
     public SpellerAssertions verifyText(String expectedText) {
         assertTrue(result[0].getS().contains(expectedText));
         return this;

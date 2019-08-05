@@ -13,6 +13,7 @@ public class EmptyStringTest {
         SpellResultDto[] result = new SpellerSteps()
                 .checkTextWithoutOptions("");
 
+        //todo вот тут понятно, что присходит, в отличаи от verifyText
         new SpellerAssertions(result)
                 .verifyEmptyResponse();
     }

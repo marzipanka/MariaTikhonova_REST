@@ -27,6 +27,9 @@ public class SpellerService {
                 .addFilter(new ResponseLoggingFilter()).build();
     }
 
+    //todo  метод хороший, но место у него не то. перенеси в utils.ProjectProperties
+    //todo ответь себе на ворпос и мне  ;) как часть будет открываться этот файлик при такой реализации
+    //а сколько раз он должен открываться?
     public static String getProperty(String prop) {
 
         Properties properties = new Properties();
