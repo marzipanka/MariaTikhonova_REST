@@ -26,6 +26,9 @@ public class NumbersTest {
         SpellResultDto[] result = new SpellerSteps()
                 .checkTextWithOptions(text, Arrays.asList(Options.IGNORE_DIGITS));
 
+        //todo писать if/for/case и другие сложные конструкции в тесте уменьшаю читабельность теста.
+        //одно из правил - тест должен быть читабельным, а второй - повторяемый.Если есть условный опреатор, то
+        // о какой воспроизводимости может ижти речь? :)
         if(expectedText.equals("")) {
             new SpellerAssertions(result)
                     .verifyEmptyResponse();

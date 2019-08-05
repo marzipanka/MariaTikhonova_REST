@@ -25,4 +25,11 @@ public class SpellerSteps {
 
         return new Gson().fromJson(response, SpellResultDto[].class);
     }
+
+    //todo - в этих двух методах дублирование налицо! почему бы  getWithParams и getNoParams не заменить одним методом
+    //get(String uri, String text, String... options)
+    //тогда можно вынести общую часть методов checkTextWithoutOptions&checkTextWithOptions в еще один приватный метод
+    //и вызывать уже ЕГО вместо доблирования кода
+
+    //todo куда потерялась checkTexts?
 }

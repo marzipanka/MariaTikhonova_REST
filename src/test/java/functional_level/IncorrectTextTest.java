@@ -28,6 +28,8 @@ public class IncorrectTextTest {
         SpellResultDto[] result = new SpellerSteps()
                 .checkTextWithOptions(text, Arrays.asList(Options.IGNORE_CAPITALIZATION));
 
+        //todo verifyText очень абстрактное название методу - не говорит о многом. Переименуй так, чтобы было понятни
+        //, что конкретно происходит. Коротко, но звучно!
         new SpellerAssertions(result)
                 .verifyText(expectedText);
     }
