@@ -5,15 +5,14 @@ import org.testng.annotations.Test;
 import service.SpellerAssertions;
 import service.SpellerSteps;
 
-public class EmptyStringTest {
+public class OnlyNumbersTest {
 
     @Test
-    public void checkEmptyStringTest() {
+    public void checkNumbersTextTest() {
 
         SpellResultDto[] result = new SpellerSteps()
-                .checkTextWithoutOptions("");
+                .checkTextWithOptions("12345");
 
-        //fixed todo вот тут понятно, что присходит, в отличаи от verifyCorrectText
         new SpellerAssertions(result)
                 .verifyEmptyResponse();
     }

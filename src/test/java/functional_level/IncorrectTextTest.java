@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 import service.SpellerAssertions;
 import service.SpellerSteps;
 
-import java.util.Arrays;
-
 public class IncorrectTextTest {
 
     @DataProvider
@@ -26,11 +24,11 @@ public class IncorrectTextTest {
     public void checkIncorrectTextTest(String text, String expectedText) {
 
         SpellResultDto[] result = new SpellerSteps()
-                .checkTextWithOptions(text, Arrays.asList(Options.IGNORE_CAPITALIZATION));
+                .checkTextWithOptions(text, Options.IGNORE_CAPITALIZATION);
 
-        //todo verifyText очень абстрактное название методу - не говорит о многом. Переименуй так, чтобы было понятни
+        //fixed todo verifyText очень абстрактное название методу - не говорит о многом. Переименуй так, чтобы было понятни
         //, что конкретно происходит. Коротко, но звучно!
         new SpellerAssertions(result)
-                .verifyText(expectedText);
+                .verifyCorrectText(expectedText);
     }
 }

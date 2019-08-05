@@ -6,7 +6,8 @@
             <class name="functional_level.CorrectTextTest"/>
             <class name="functional_level.IncorrectTextTest"/>
             <class name="functional_level.EmptyStringTest"/>
-            <class name="functional_level.NumbersTest"/>
+            <class name="functional_level.NumbersWithTextTest"/>
+            <class name="functional_level.OnlyNumbersTest"/>
         </classes>
     </test>
 </suite>

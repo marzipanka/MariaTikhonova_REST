@@ -16,14 +16,12 @@ public class SpellerAssertions {
     }
 
     public void verifyEmptyResponse() {
-       // assertFalse(result.toString().contains("{"));
-
         List resultList = Arrays.asList(result);
         assertTrue(resultList.isEmpty());
     }
 
-    //todo про название - написала коменты ниже
-    public SpellerAssertions verifyText(String expectedText) {
+    //fixed todo про название - написала коменты ниже
+    public SpellerAssertions verifyCorrectText(String expectedText) {
         assertTrue(result[0].getS().contains(expectedText));
         return this;
     }

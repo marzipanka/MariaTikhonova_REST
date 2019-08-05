@@ -6,12 +6,7 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Properties;
+import utils.ProjectProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,44 +17,31 @@ public class SpellerService {
     public SpellerService() {
 
         REQUEST_SPECIFICATION = new RequestSpecBuilder()
-                .setBaseUri(getProperty("json_interface"))
+                .setBaseUri(ProjectProperties.properties.getProperty("json_interface"))
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter()).build();
     }
 
-    //todo  метод хороший, но место у него не то. перенеси в utils.ProjectProperties
-    //todo ответь себе на ворпос и мне  ;) как часть будет открываться этот файлик при такой реализации
-    //а сколько раз он должен открываться?
-    public static String getProperty(String prop) {
+    public Response getResponseForText(String uri, String text, Options... params) {
+        RequestSpecification specification = buildRequest(params);
 
-        Properties properties = new Properties();
-
-        try (InputStream input = new FileInputStream("./src/test/resources/properties/test.properties")) {
-            if (input == null) {
-                System.out.println("test.properties file not found");
-            }
-            properties.load(input);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-        return properties.getProperty(prop);
+        specification.param("text", text);
+        return specification.get(uri);
     }
 
-    public Response getNoParams(String uri, String text) {
-        return given(REQUEST_SPECIFICATION).param(("options"), Options.DEFAULT).param("text", text).get(uri);
+    public Response getResponseForTexts(String uri, String[] texts, Options... params) {
+        RequestSpecification specification = buildRequest(params);
+
+        specification.param("text", texts);
+        return specification.get(uri);
     }
 
-    public Response getWithParams(String uri, String text, List<Options> params) {
-
+    private RequestSpecification buildRequest(Options... params) {
         RequestSpecification specification = given(REQUEST_SPECIFICATION);
 
         for (Options param : params) {
             specification.param(("options"), param);
         }
-
-        specification.param("text", text);
-
-        return specification.get(uri);
+        return specification;
     }
 }

@@ -9,7 +9,7 @@ public class CorrectResponseTest {
     @Test
     public void checkResponseTest() {
 
-        new SpellerService().getNoParams(URI.GET_CORRECT_TEXT, "helloo")
+        new SpellerService().getResponseForText(URI.GET_CORRECT_TEXT, "helloo")
                 .then().statusCode(200);
     }
 }
