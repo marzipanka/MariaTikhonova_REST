@@ -16,6 +16,8 @@ public class SpellerSteps {
         return checkText(text, options);
     }
 
+    //todo checkTextWithOptions и checkText получились с одной сигнатурой. Так что один из них можно и ликвидировать.
+    //будь внимательнее!
     private SpellResultDto[] checkText(String text, Options... options) {
         String response =  new SpellerService()
                 .getResponseForText(URI.GET_CORRECT_TEXT, text, options)
