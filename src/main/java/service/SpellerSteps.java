@@ -25,14 +25,10 @@ public class SpellerSteps {
     //Methods for "checkTexts" YandexSpeller method
 
     public SpellResultDto[] checkTextsWithoutOptions(String[] texts) {
-        return checkTexts(texts, Options.DEFAULT);
+        return checkTextsWithOptions(texts, Options.DEFAULT);
     }
 
     public SpellResultDto[] checkTextsWithOptions(String[] texts, Options... options) {
-        return checkTexts(texts, options);
-    }
-
-    private SpellResultDto[] checkTexts(String[] texts, Options... options) {
         String response =  new SpellerService()
                 .getResponseForTexts(URI.GET_CORRECT_TEXTS, texts, options)
                 .getBody().asString();
